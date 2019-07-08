@@ -1,0 +1,44 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+    .screen {
+      background-color: black;
+      width: 400px;
+      height: 400px;
+      position: relative;
+      margin: 50px auto;
+    }
+    .box {
+      background-color: blue;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+    .message {
+      margin-bottom: 20px;
+    }
+    .restart-button {
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+
+  <script type="text/javascript" src="challenge5.js"></script>
+</head>
+<body>
+  <main></main>
+  <script>
+    var app = Elm.Challenge5.init({
+      node: document.querySelector('main'),
+      flags: localStorage.getItem('highScore')
+    })
+    app.ports.saveHighScore.subscribe(function(highScore) {
+      localStorage.setItem('highScore', JSON.stringify(highScore))
+    })
+  </script>
+</body>
+</html>
